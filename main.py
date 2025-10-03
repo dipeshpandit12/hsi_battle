@@ -13,7 +13,7 @@ import ssl
 import sys
 from processing_text.main import process_seller_text
 from pydantic import BaseModel, HttpUrl
-from processing_video.main import processing_seller_video
+from processing_image.main import processing_seller_image
 
 
 # Create FastAPI instance
@@ -59,17 +59,11 @@ async def processing_text(request: TextInput):
 
 
 
-#this endpoiint process the video url as input from the seller dashboard in next.js app and should pass to the video-processing folder main.py file for processing
-@app.post("/processing-video")
-async def processing_video(request: VideoInput):
-    # Import the process_video function at the top of the file
-    return {"received_video_url": str(request.url), "message": "video URL received successfully", "return_value": processing_seller_video(request.url)}
-
-
-
-
-
-
+#this endpoiint process the image url as input from the seller dashboard in next.js app and should pass to the image-processing folder main.py file for processing
+@app.post("/processing-image")
+async def processing_image(request: VideoInput):
+    # Import the process_image function at the top of the file
+    return {"received_image_url": str(request.url), "message": "image URL received successfully", "return_value": processing_seller_image(request.url)}
 
 
 
