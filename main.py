@@ -12,6 +12,8 @@ import os
 import ssl
 import sys
 from processing_text.main import process_seller_text
+from pydantic import BaseModel, HttpUrl
+from processing_video.main import processing_seller_video
 
 
 # Create FastAPI instance
@@ -33,6 +35,10 @@ ngrok_auth_token = os.getenv("NGROK_AUTH_TOKEN")
 class TextInput(BaseModel):
     text: str
 
+# Pydantic models
+class VideoInput(BaseModel):
+    url: HttpUrl
+
 
 # Root endpoint
 @app.get("/")
@@ -44,12 +50,28 @@ async def root():
 async def health_check():
     return {"status": "healthy", "message": "API is running"}
 
+
+
 #this endpoint receives the users text input entered by the seller in the input box in the seller dashboard in next.js app and and should pass to the seller-text folder main.py file for processing
 @app.post("/processing-text")
 async def processing_text(request: TextInput):
     return {"received_text": request.text, "message": "Text received successfully", "return_value": process_seller_text(request.text)}
 
-#this endpoint receives the users text input entered by the seller in the input box in the seller dashboard in next.js app
+
+
+#this endpoiint process the video url as input from the seller dashboard in next.js app and should pass to the video-processing folder main.py file for processing
+@app.post("/processing-video")
+async def processing_video(request: VideoInput):
+    # Import the process_video function at the top of the file
+    return {"received_video_url": str(request.url), "message": "video URL received successfully", "return_value": processing_seller_video(request.url)}
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     # Start the FastAPI server
