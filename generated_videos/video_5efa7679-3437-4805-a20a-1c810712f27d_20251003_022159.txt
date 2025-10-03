@@ -1,0 +1,15 @@
+{
+  "trace_id": "5efa7679-3437-4805-a20a-1c810712f27d",
+  "enhanced_description": "Professional video: Product demonstration video. Duration: 5s. Style: cinematic commercial. Lighting: professional studio setup. Camera: smooth movements. Aspect ratio: 16:9.",
+  "duration_seconds": 5,
+  "aspect_ratio": "16:9",
+  "created_at": "2025-10-03T02:21:59.678096",
+  "type": "placeholder_video",
+  "note": "This is a placeholder file. In production, this would contain actual video data.",
+  "video_specs": {
+    "format": "mp4",
+    "resolution": "1920x1080",
+    "framerate": "30fps",
+    "duration": "5s"
+  }
+}

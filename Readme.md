@@ -366,6 +366,8 @@ curl -X POST http://localhost:8000/processing-image \
   -d '{"image_url": "https://example.com/phone.jpg"}'
 ```
 
+
+s
 ### **🔧 SessionId Best Practices**
 - **Use Unique IDs**: Generate unique sessionId for each product (e.g., `user-123-product-456`)
 - **Timeout Awareness**: Sessions expire after 5 minutes
